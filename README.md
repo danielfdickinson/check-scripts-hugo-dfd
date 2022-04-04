@@ -2,6 +2,9 @@
 
 Central location for scripts @danielfdickinson uses with Hugo modules, themes, and sites
 
+Mostly a scratchpad for testing checks for which the intent is to use GitHub Actions or
+other CI.
+
 ## License
 
 Copyright 2022 Daniel F. Dickinson
