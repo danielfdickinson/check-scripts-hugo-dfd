@@ -1,3 +1,5 @@
+#!/bin/bash
+
 npx hyperlink public/sitemap.xml --canonicalroot https://www.wildtechgarden.ca/ \
     --skip "https://www.facebook.com/sharer.php" \
     --skip "https://linkedin.com/shareArticle" \
