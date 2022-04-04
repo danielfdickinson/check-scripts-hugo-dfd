@@ -33,7 +33,9 @@ fi
 
 echo "Using ${CROOT} as canonicalroot"
 
-SKIPS=""; for skip in ${SKIP_CHECK_PATTERNS}; do SKIPS="${SKIPS}${SKIPS:+ }--skip \"${skip}\""; done ; \
+SKIPS=""
+# shellcheck disable=SC2089
+for skip in ${SKIP_CHECK_PATTERNS}; do SKIPS="${SKIPS}${SKIPS:+ }--skip \"${skip}\""; done
 
 URLBASE=public/sitemap.xml
 
@@ -41,6 +43,7 @@ if [ ! -e "$URLBASE" ]; then
     URLBASE=public/index.html
 fi
 
+# shellcheck disable=SC2090,SC2086
 npx hyperlink "$URLBASE" --canonicalroot "${CROOT}" \
     --internal \
     ${SKIPS} \
