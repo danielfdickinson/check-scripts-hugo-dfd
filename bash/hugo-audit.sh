@@ -4,7 +4,7 @@ set -o pipefail
 
 [ -z "$HUGO_COMMAND" ] && HUGO_COMMAND="hugo"
 
-if HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=true HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS=true "HUGO_RESOURCEDIR=$(pwd)/resources" "$HUGO_COMMAND" --gc --cleanDestinationDir  --destination "$(pwd)/public" --source "$(pwd)"; then
+if HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=true HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS=true "HUGO_RESOURCEDIR=$(pwd)/resources" "$HUGO_COMMAND" --gc --cleanDestinationDir --destination "$(pwd)/public" --source "$(pwd)"; then
     # If hugo build succeeds but possible audit issues are present, check further
     # Check for problem indicators (see https://discourse.gohugo.io/t/audit-your-published-site-for-problems/35184)
     grep -iIrnE '<\!-- raw HTML omitted -->|ZgotmplZ|hahahugo|\[i18n\]|\(<nil>\)|\(&lt;nil&gt;\)' public/ >hugo-audit.log
