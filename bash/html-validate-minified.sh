@@ -2,7 +2,13 @@
 
 set -o pipefail
 
-if npx html-validate --config .htmlvalidate-minified.json public 2>&1 | tee html-validate.log; then
+SITEROOT="."
+
+if [ -d exampleSite ]; then
+    SITEROOT=exampleSite
+fi
+
+if npx html-validate --config .htmlvalidate-minified.json "${SITEROOT}"/public 2>&1 | tee html-validate.log; then
     echo "ok"
 else
     echo "not ok"
