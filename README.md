@@ -5,6 +5,10 @@ Central location for scripts @danielfdickinson uses with Hugo modules, themes, a
 Mostly a scratchpad for testing checks for which the intent is to use GitHub Actions or
 other CI.
 
+## Status
+
+[![bash-check](https://github.com/danielfdickinson/check-scripts-hugo-dfd/actions/workflows/bash-check.yml/badge.svg)](https://github.com/danielfdickinson/check-scripts-hugo-dfd/actions/workflows/bash-check.yml)
+
 ## License
 
 Copyright 2022 Daniel F. Dickinson
