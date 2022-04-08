@@ -13,7 +13,7 @@ fi
 if HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=true HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS=true HUGO_RESOURCEDIR="$(pwd)/resources" "$HUGO_COMMAND" --gc --cleanDestinationDir --destination "${SITEROOT}/public" --source "${SITEROOT}"; then
     # If hugo build succeeds but possible audit issues are present, check further
     # Check for problem indicators (see https://discourse.gohugo.io/t/audit-your-published-site-for-problems/35184)
-    grep -iIrnE '<\!-- raw HTML omitted -->|ZgotmplZ|hahahugo|\[i18n\]|\(<nil>\)|\(&lt;nil&gt;\)' public/ >hugo-audit.log
+    grep -iIrnE '<\!-- raw HTML omitted -->|ZgotmplZ|hahahugo|\[i18n\]|\(<nil>\)|\(&lt;nil&gt;\)' "${SITEROOT}/public/" >hugo-audit.log
     RET=$?
     if [ "$RET" != "1" ] && [ "$RET" != "0" ]; then
         # Make sure we fail if there is is error executing the check command
