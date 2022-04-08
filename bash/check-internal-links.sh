@@ -28,7 +28,7 @@ if [ -d exampleSite ]; then
 fi
 
 if grep -q baseURL "${SITEROOT}"/config.toml; then
-    CROOT="$(grep baseURL exampleSite/config.toml | sed -e 's/^.*[^=]* *'\''\([^'\'']*\)'\'' *$/\1/')"
+    CROOT="$(grep baseURL exampleSite/config.toml | sed -e 's/^[^=]*= *\('\''\|"\)\([^'\''"]*\)\('\''\|"\)\( \|\n\)*$/\2/')"
 fi
 
 echo "Using ${CROOT} as canonicalroot"
@@ -37,10 +37,10 @@ SKIPS=""
 # shellcheck disable=SC2089
 for skip in ${SKIP_CHECK_PATTERNS}; do SKIPS="${SKIPS}${SKIPS:+ }--skip \"${skip}\""; done
 
-URLBASE=public/sitemap.xml
+URLBASE="${SITEROOT}"/public/sitemap.xml
 
 if [ ! -e "$URLBASE" ]; then
-    URLBASE=public/index.html
+    URLBASE="${SITEROOT}"/public/index.html
 fi
 
 # shellcheck disable=SC2090,SC2086
