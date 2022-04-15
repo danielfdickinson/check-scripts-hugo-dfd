@@ -21,10 +21,10 @@ example.net"
 fi
 
 CROOT="${1:-https://www.example.com}"
-SITEROOT="."
+SITEROOT="$(pwd)"
 
 if [ -d exampleSite ]; then
-    SITEROOT=exampleSite
+    SITESRC=exampleSite
 fi
 
 if grep -q baseURL "${SITEROOT}"/config.toml; then

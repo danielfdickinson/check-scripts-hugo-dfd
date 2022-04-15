@@ -7,10 +7,10 @@ set -o pipefail
 SITEROOT="$(pwd)"
 
 if [ -d "$(pwd)"/exampleSite ]; then
-    SITEROOT="$(pwd)"/exampleSite
+    SITESRC="$(pwd)"/exampleSite
 fi
 
-if HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=true HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS=true HUGO_RESOURCEDIR="$(pwd)/resources" "$HUGO_COMMAND" --minify --gc --cleanDestinationDir --destination "${SITEROOT}/public" --source "${SITEROOT}"; then
+if HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS=true HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS=true HUGO_RESOURCEDIR="$(pwd)/resources" "$HUGO_COMMAND" --minify --gc --cleanDestinationDir --destination "${SITEROOT}/public" --source "${SITESRC}"; then
     # If hugo build succeeds but possible audit issues are present, check further
     # Check for problem indicators (see https://discourse.gohugo.io/t/audit-your-published-site-for-problems/35184)
     grep -iIrnE '<\!-- raw HTML omitted -->|ZgotmplZ|hahahugo|\[i18n\]|\(<nil>\)|\(&lt;nil&gt;\)' "${SITEROOT}/public/" >hugo-audit.log

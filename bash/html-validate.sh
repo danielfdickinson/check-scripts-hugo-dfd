@@ -2,10 +2,10 @@
 
 set -o pipefail
 
-SITEROOT="."
+SITEROOT="$(pwd)"
 
 if [ -d exampleSite ]; then
-    SITEROOT=exampleSite
+    SITESRC=exampleSite
 fi
 
 if npx html-validate "${SITEROOT}"/public 2>&1 | tee html-validate.log; then
