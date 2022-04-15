@@ -21,9 +21,9 @@ fi
 CROOT="${1:-https://www.example.com}"
 SITEROOT="$(pwd)"
 
-if [ -d exampleSite ]; then
-    SITESRC=exampleSite
-fi
+#if [ -d exampleSite ]; then
+#    SITESRC=exampleSite
+#fi
 
 if grep -q baseURL "${SITEROOT}"/config.toml; then
     CROOT="$(grep baseURL exampleSite/config.toml | sed -e 's/^[^=]*= *\('\''\|"\)\([^'\''"]*\)\('\''\|"\)\( \|\n\)*$/\2/')"
