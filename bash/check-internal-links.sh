@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 if [ -z "$SKIP_CHECK_PATTERNS" ]; then
     SKIP_CHECK_PATTERNS="https://www.facebook.com/sharer.php \
 https://www.linkedin.com/shareArticle  \
@@ -23,12 +21,14 @@ fi
 CROOT="${1:-https://www.example.com}"
 SITEROOT="$(pwd)"
 
-#if [ -d exampleSite ]; then
-#    SITESRC=exampleSite
-#fi
+if [ -d exampleSite ]; then
+    SITESRC=exampleSite
+else
+    SITESRC=${SITEROOT}
+fi
 
 if grep -q baseURL "${SITEROOT}"/config.toml; then
-    CROOT="$(grep baseURL exampleSite/config.toml | sed -e 's/^[^=]*= *\('\''\|"\)\([^'\''"]*\)\('\''\|"\)\( \|\n\)*$/\2/')"
+    CROOT="$(grep baseURL ${SITESRC}/config.toml | sed -e 's/^[^=]*= *\('\''\|"\)\([^'\''"]*\)\('\''\|"\)\( \|\n\)*$/\2/')"
 fi
 
 echo "Using ${CROOT} as canonicalroot"
