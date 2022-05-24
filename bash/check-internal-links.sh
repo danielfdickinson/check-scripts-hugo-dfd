@@ -28,7 +28,7 @@ else
 fi
 
 if grep -q baseURL "${SITEROOT}"/config.toml; then
-    CROOT="$(grep baseURL ${SITESRC}/config.toml | sed -e 's/^[^=]*= *\('\''\|"\)\([^'\''"]*\)\('\''\|"\)\( \|\n\)*$/\2/')"
+    CROOT="$(grep baseURL "${SITESRC}"/config.toml | sed -e 's/^[^=]*= *\('\''\|"\)\([^'\''"]*\)\('\''\|"\)\( \|\n\)*$/\2/')"
 fi
 
 echo "Using ${CROOT} as canonicalroot"
